@@ -1,5 +1,7 @@
 <div align="center">
 
+## This is poetry version of the https://github.com/ashleve/lightning-hydra-template template
+
 # Lightning-Hydra-Template
 
 [![python](https://img.shields.io/badge/-Python_3.8_%7C_3.9_%7C_3.10-blue?logo=python&logoColor=white)](https://github.com/pre-commit/pre-commit)
@@ -141,18 +143,21 @@ The directory structure of new project looks like this:
 
 ```bash
 # clone project
-git clone https://github.com/ashleve/lightning-hydra-template
+git clone https://github.com/TheLion-ai/lightning-hydra-template.git
 cd lightning-hydra-template
 
-# [OPTIONAL] create conda environment
-conda create -n myenv python=3.9
-conda activate myenv
+# adjust your pytorch and cuda version in pyproject.toml  according to instructions https://pytorch.org/get-started/
+[[tool.poetry.source]]
+torch = {version = "^2.1.0.dev20230623+cu121", platform = "linux", source = "torch"}
+torchvision = {version = "^0.16.0.dev20230623+cu121", platform = "linux", source = "torch"}
 
-# install pytorch according to instructions
-# https://pytorch.org/get-started/
+name = "torch"
+url = " https://download.pytorch.org/whl/nightly/cu121"
+priority = "supplemental"
 
 # install requirements
-pip install -r requirements.txt
+poetry install
+# install pytorch according to instructions
 ```
 
 Template contains example with MNIST classification.<br>
